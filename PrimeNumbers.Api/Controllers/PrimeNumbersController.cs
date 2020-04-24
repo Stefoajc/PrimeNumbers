@@ -5,7 +5,7 @@ using PrimeNumbers.Service;
 namespace PrimeNumbers.Api.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/prime-numbers")]
     public class PrimeNumbersController : ControllerBase
     {
         private readonly ILogger<PrimeNumbersController> _logger;
@@ -24,6 +24,7 @@ namespace PrimeNumbers.Api.Controllers
         /// </remarks>
         /// <param name="number">number after which the prime will be returned</param>
         /// <returns>next prime after the specified number</returns>
+        [HttpGet("next/{number}")]
         public ActionResult<int> NextPrime(int number)
         {
             var result = PrimeNumberService.NextPrime(number);
@@ -44,6 +45,7 @@ namespace PrimeNumbers.Api.Controllers
         /// </remarks>
         /// <param name="number"></param>
         /// <returns></returns>
+        [HttpGet("{number}/is-prime")]
         public ActionResult<bool> IsPrime(int number)
         {
             return Ok(PrimeNumberService.IsPrime(number));
