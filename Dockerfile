@@ -9,6 +9,7 @@ WORKDIR /src
 COPY "PrimeNumbers.sln" "./"
 COPY ["PrimeNumbers.Api/*.csproj", "./PrimeNumbers.Api/"]
 COPY ["PrimeNumbers.Service/*.csproj", "./PrimeNumbers.Service/"]
+COPY ["PrimeNumbers.Test/*.csproj", "./PrimeNumbers.Test/"]
 
 RUN dotnet restore
 COPY . .
