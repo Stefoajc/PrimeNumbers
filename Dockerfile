@@ -1,7 +1,11 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+#Use the following command
+#
+#docker run -p 5000:5000 -e ASPNETCORE_URLS=http://+:5000 --name alias imagename
+#     host port^    ^container port
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
@@ -12,6 +16,7 @@ COPY ["PrimeNumbers.Test/*.csproj", "./PrimeNumbers.Test/"]
 
 RUN dotnet restore
 COPY . .
+
 WORKDIR "/src/PrimeNumbers.Service"
 RUN dotnet build -c Release -o /app
 

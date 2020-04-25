@@ -20,7 +20,8 @@ namespace PrimeNumbers.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                        .UseUrls("http://*:5000"); // used so the app inside the docker container to run on port 5000
                 });
     }
 }
